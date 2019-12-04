@@ -25,7 +25,7 @@ for index,row in df_all.iterrows():
          flag = True 
     if flag:
        index = index.replace('.XSHE','').replace('.XSHG','') 
-       if(res in ${codes}):
+       if(index in ${codes}):
          res.append(index)
 print(','.join(res))
 print(len(res))
