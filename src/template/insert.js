@@ -1,0 +1,1 @@
+db.mocktrades.insertMany([${data}])

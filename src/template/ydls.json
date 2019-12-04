@@ -1,0 +1,31 @@
+{
+    "code" : "${code}",
+    "state" : "未开始",
+    "result" : "无",
+    "userId" : ObjectId("5d905db9fc84d3224b0eb59c"),
+    "strategyId" : ObjectId("5da19b7d181fc3600c5544c4"),
+    "createDate" : new Date(),
+    "deleted" : false,
+    "params" : {
+        "code" : "${code}",
+        "volume" : "100",
+        "executeDate" : "${executeDate}",
+        "monitorTime" : {
+            "start" : "09:30",
+            "end" : "15:00"
+        },
+        "index_percent" : {
+            "low" : "-1.0",
+            "high" : "3.0"
+        },
+        "percent" : {
+            "low" : "-0.5",
+            "high" : "2.5"
+        },
+        "speed" : {
+            "time" : "2",
+            "percent" : "2",
+            "amount" : "300"
+        }
+    }
+}
