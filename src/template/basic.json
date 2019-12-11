@@ -8,19 +8,19 @@
     "deleted" : false,
     "params" : {
         "code" : "${code}",
-        "volume" : "100",
+        "volume" : "1000000",
         "executeDate" : "${executeDate}",
         "monitorTime" : {
             "start" : "09:30",
             "end" : "15:00"
         },
         "index_percent" : {
-            "low" : "-1.0",
-            "high" : "3.0"
+            "low" : "-3.0",
+            "high" : "0"
         },
         "percent" : {
-            "low" : "-0.5",
-            "high" : "2.5"
+            "low" : "-7",
+            "high" : "-2.5"
         }
     }
 }
