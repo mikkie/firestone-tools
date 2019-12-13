@@ -3,29 +3,33 @@
     "state" : "未开始",
     "result" : "无",
     "userId" : ObjectId("5d905db9fc84d3224b0eb59c"),
-    "strategyId" : ObjectId("5da19b7d181fc3600c5544c4"),
+    "strategyId" : ObjectId("5da19b7d181fc3600c5544c3"),
     "createDate" : new Date(),
     "deleted" : false,
     "params" : {
         "code" : "${code}",
-        "volume" : "100",
+        "volume" : "1000000",
         "executeDate" : "${executeDate}",
         "monitorTime" : {
             "start" : "09:30",
-            "end" : "15:00"
+            "end" : "14:30"
         },
         "index_percent" : {
-            "low" : "-1.0",
-            "high" : "3.0"
+            "low" : "-0.3",
+            "high" : "1.5"
         },
         "percent" : {
-            "low" : "-0.5",
-            "high" : "2.5"
+            "low" : "-1",
+            "high" : "2.0"
         },
         "speed" : {
+            "min_vibration" : "0.5",
+            "max_vibration" : "2.5",
+            "upper_shadow" : "0.2",
+            "ratio_l" : "2",
+            "ratio_r" : "3",
             "time" : "2",
-            "percent" : "2",
-            "amount" : "300"
+            "amount" : "500"
         }
     }
 }
