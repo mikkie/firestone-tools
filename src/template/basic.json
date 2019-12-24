@@ -11,7 +11,7 @@
         "volume" : "1000000",
         "executeDate" : "${executeDate}",
         "monitorTime" : {
-            "start" : "09:30",
+            "start" : "14:30",
             "end" : "15:00"
         },
         "index_percent" : {
@@ -19,8 +19,8 @@
             "high" : "-0.7"
         },
         "percent" : {
-            "low" : "-6",
-            "high" : "-2"
+            "low" : "-4",
+            "high" : "-1"
         }
     }
 }
