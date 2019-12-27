@@ -11,7 +11,7 @@
         "volume" : "1000000",
         "executeDate" : "${executeDate}",
         "monitorTime" : {
-            "start" : "09:30",
+            "start" : "10:00",
             "end" : "14:30"
         },
         "index_percent" : {
