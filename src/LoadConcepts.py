@@ -3,6 +3,8 @@ import json
 import requests
 import random
 import time
+import argparse
+import sys
 from lxml import etree
 from pymongo import MongoClient
 
@@ -14,7 +16,7 @@ class LoadConcepts(object):
 
     _COLLECTION = 'codes'
 
-    def __init__(self):
+    def __init__(self, in_codes):
         self.__header = {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
             'Accept-Encoding': 'gzip, deflate',
@@ -28,7 +30,10 @@ class LoadConcepts(object):
         }
         client = MongoClient(LoadConcepts._MONFO_URL, 27017)
         self.data_db = client[LoadConcepts._DATA_DB]
-        self.code_list = self.data_db[LoadConcepts._COLLECTION].find({})
+        if(in_codes is not None):
+            self.code_list = [{'code' : code} for code in in_codes.split(',')]
+        else:
+            self.code_list = self.data_db[LoadConcepts._COLLECTION].find({})
 
     def load_concepts(self):
         error_codes = []
@@ -41,7 +46,7 @@ class LoadConcepts(object):
                 time.sleep(inter)
             except Exception:
                 error_codes.append(code)
-        print(f'get F10 data error: {error_codes}')
+        print(f"get F10 data error: {','.join(error_codes)}")
 
     def get_concept(self, code):
         concept_json = {
@@ -60,12 +65,26 @@ class LoadConcepts(object):
         response.encoding = response.apparent_encoding
         page = etree.HTML(response.text)
         for key in info:
-            concept_json[key] = page.xpath(info[key])[0].text.strip()
+            try:    
+                concept_json[key] = page.xpath(info[key])[0].text.strip()
+            except Exception:
+                concept_json[key] = ''
         concepts = page.xpath('//*[@id="profile"]/div[2]/table[1]/tbody/tr[2]/td/div[2]')
         for index, cont in enumerate(concepts[0].getchildren()):
             if(index < len(concepts[0]) - 1):
                 concept_json['concepts'][str(index)] = cont.text.strip()
         return concept_json
+
+
+    @staticmethod
+    def parse_args(args):
+        parser = argparse.ArgumentParser(
+            description="load concept data to mongodb")
+        parser.add_argument(
+            dest="codes",
+            help="the stock codes",
+            metavar="codes")
+        return parser.parse_args(args)
         
 
 
@@ -76,5 +95,7 @@ if __name__ == "__main__":
     # print("start debug on port 5678")
     # ptvsd.enable_attach(address=('localhost', 5678), redirect_output=True)
     # ptvsd.wait_for_attach()
-    LoadConcepts().load_concepts()
+    args = LoadConcepts.parse_args(sys.argv[1:])
+    lc = LoadConcepts(args.codes)
+    lc.load_concepts()
 
