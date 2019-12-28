@@ -46,7 +46,8 @@ class LoadConcepts(object):
                 time.sleep(inter)
             except Exception:
                 error_codes.append(code)
-        print(f"get F10 data error: {','.join(error_codes)}")
+        if(len(error_codes) > 0):
+            print(f"get F10 data error: {','.join(error_codes)}")
 
     def get_concept(self, code):
         concept_json = {
@@ -70,6 +71,8 @@ class LoadConcepts(object):
             except Exception:
                 concept_json[key] = ''
         concepts = page.xpath('//*[@id="profile"]/div[2]/table[1]/tbody/tr[2]/td/div[2]')
+        if(len(concepts) == 0):
+            concepts = page.xpath('//*[@id="profile"]/div[2]/table[1]/tbody/tr[2]/td/div')
         for index, cont in enumerate(concepts[0].getchildren()):
             if(index < len(concepts[0]) - 1):
                 concept_json['concepts'][str(index)] = cont.text.strip()
