@@ -86,6 +86,7 @@ class LoadConcepts(object):
         parser.add_argument(
             dest="codes",
             help="the stock codes",
+            nargs="?",
             metavar="codes")
         return parser.parse_args(args)
         
