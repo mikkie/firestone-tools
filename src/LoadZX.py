@@ -45,12 +45,12 @@ class LoadZX(object):
 
 
 if __name__ == "__main__":
-    # to debug in vscode uncomment this block
-    import ptvsd
-    # 5678 is the default attach port in the VS Code debug configurations
-    print("start debug on port 5678")
-    ptvsd.enable_attach(address=('localhost', 5678), redirect_output=True)
-    ptvsd.wait_for_attach()
+    # # to debug in vscode uncomment this block
+    # import ptvsd
+    # # 5678 is the default attach port in the VS Code debug configurations
+    # print("start debug on port 5678")
+    # ptvsd.enable_attach(address=('localhost', 5678), redirect_output=True)
+    # ptvsd.wait_for_attach()
     args = LoadZX.parse_args(sys.argv[1:])
     lzx = LoadZX(args.codes)
     lzx.load_zx()
