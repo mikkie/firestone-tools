@@ -52,6 +52,12 @@ class LoadData(object):
             print(e)
 
 if __name__ == "__main__":
+    # # to debug in vscode uncomment this block
+    # import ptvsd
+    # # 5678 is the default attach port in the VS Code debug configurations
+    # print("start debug on port 5678")
+    # ptvsd.enable_attach(address=('localhost', 5678), redirect_output=True)
+    # ptvsd.wait_for_attach()
     ld = LoadData()
     args = ld.parse_args(sys.argv[1:])
     ld.load_data(args.strategy, args.codes)

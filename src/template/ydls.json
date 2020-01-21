@@ -8,26 +8,29 @@
     "deleted" : false,
     "params" : {
         "code" : "${code}",
-        "volume" : "1000000",
+        "volume" : "20000",
         "executeDate" : "${executeDate}",
         "monitorTime" : {
-            "start" : "10:00",
+            "start" : "09:30",
             "end" : "14:30"
         },
         "index_percent" : {
             "low" : "-0.3",
-            "high" : "1.5"
+            "high" : "3.0"
         },
         "percent" : {
-            "low" : "-1",
-            "high" : "2.0"
+            "low" : "0",
+            "high" : "3"
         },
         "speed" : {
-            "lower_shadow" : "0.25",
+            "upper_shadow" : "0.2",
             "ratio_l" : "2",
             "ratio_r" : "3",
             "time" : "2",
-            "amount" : "500"
+            "break_top" : "1.5",
+            "time_2" : "2",
+            "percent" : "0.5",
+            "amount" : "800"
         }
     }
 }
